@@ -1,5 +1,11 @@
 package ke.co.safaricom;
 
+import spark.ModelAndView;
+import spark.template.handlebars.HandlebarsTemplateEngine;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import static spark.Spark.*;
 public class Main {
 
@@ -7,7 +13,11 @@ public class Main {
 
             get("/animals", (request, response) -> {
 
-                return "Here are the animals in the forest!";
+                Map<String, Object> model = new HashMap<>();
+                model.put("animals", "dummy");
+
+                // Render the Handlebars template with the model data*/
+                return new HandlebarsTemplateEngine().render(new ModelAndView(model, "animals.hbs"));
             });
 
             get("/sightings", (request, response) -> {
