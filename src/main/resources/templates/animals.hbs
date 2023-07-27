@@ -11,6 +11,82 @@
     <h1>List of Animals</h1>
 
     <img src="images/lion.jpg">
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Outer Column -->
+            <!-- Button to Add Animal -->
+            <button type="button" class="btn btn-brown" data-toggle="modal" data-target="#addAnimalModal">
+                Add Animal
+            </button>
+            <div class="col">
+                <h2>Animals</h2>
+                <!-- Inner Column -->
+                <div class="row">
+                    <div class="col">
+                        <p>EIA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Outer Column in Second Row -->
+            <div class="col">
+                <h2>Animal Table</h2>
+                <!-- Inner Column in Second Row -->
+                <div class="row">
+                    <div class="col">
+                        <p>Animal Table Content</p>
+                        <div class="row">
+                            <div class="col">
+                                <h3>Inner Column</h3>
+                                <!-- Table inside the Inner Column -->
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Endangered</th>
+                                        <th>Age</th>
+                                        <th>Health</th>
+                                        <th>Edit</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Lion</td>
+                                        <td>Yes</td>
+                                        <td>15</td>
+                                        <td>Ok</td>
+                                        <td>
+                                            <!-- Edit button -->
+                                            <button type="button" class="btn btn-primary" onclick="editAnimal(1)">Edit</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Cat</td>
+                                        <td>No</td>
+                                        <td>5</td>
+                                        <td>Ok</td>
+                                        <<td>
+                                        <!-- Edit button -->
+                                        <button type="button" class="btn btn-primary" onclick="editAnimal(1)">Edit</button>
+                                    </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and jQuery links -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
