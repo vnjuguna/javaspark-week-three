@@ -10,6 +10,8 @@ import static spark.Spark.*;
 public class Main {
 
         public static void main(String[] args) {
+            // root is 'src/main/resources', so put files in 'src/main/resources/public'
+            staticFiles.location("/public"); // Static files
 
             get("/animals", (request, response) -> {
 
@@ -18,7 +20,7 @@ public class Main {
 
                 // Render the Handlebars template with the model data*/
 
-                return new ModelAndView(new HashMap(), "animals.hbs");
+                return new ModelAndView(model, "animals.hbs");
 
             }, new HandlebarsTemplateEngine());
 
