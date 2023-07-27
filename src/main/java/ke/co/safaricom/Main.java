@@ -10,13 +10,16 @@ public class Main {
                 return "Here are the animals in the forest!";
             });
 
-            post("/sightings", (request, response) -> {
+            get("/sightings", (request, response) -> {
 
                 return "Sighting reported successfully!";
+            });
+            get("/", (request, response) -> {
+
+                return "Home Page!";
             });
 
 
         }
     }
 
-}
