@@ -17,8 +17,11 @@ public class Main {
                 model.put("animals", "dummy");
 
                 // Render the Handlebars template with the model data*/
-                return new HandlebarsTemplateEngine().render(new ModelAndView(model, "animals.hbs"));
-            });
+
+                return new ModelAndView(new HashMap(), "animals.hbs");
+
+            }, new HandlebarsTemplateEngine());
+
 
             get("/sightings", (request, response) -> {
 
