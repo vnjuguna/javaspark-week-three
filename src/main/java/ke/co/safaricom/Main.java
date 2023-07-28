@@ -28,7 +28,7 @@ public class Main {
             get("/sightings", (request, response) -> {
 
                 Map<String, Object> model = new HashMap<>();
-                model.put("sightings", "dummy");
+                model.put("sightings", "placeholder");
 
                 // Render the Handlebars template with the model data*/
 
