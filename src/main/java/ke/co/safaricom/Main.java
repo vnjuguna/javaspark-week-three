@@ -27,7 +27,16 @@ public class Main {
 
             get("/sightings", (request, response) -> {
 
-                return "Sighting reported successfully!";
+                Map<String, Object> model = new HashMap<>();
+                model.put("sightings", "dummy");
+
+                // Render the Handlebars template with the model data*/
+
+                return new ModelAndView(model, "sightings.hbs");
+
+                //return "Sighting reported successfully!";
+
+
             });
             get("/", (request, response) -> {
 
