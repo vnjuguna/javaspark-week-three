@@ -1,5 +1,5 @@
 # Name of the Project
-Wildlife Sightings
+Wildlife Sightings Tracker
 
 ## Description of Project
 This app that allows Rangers to report sightings of Animals in the forest and whether they are endangered to help in Environmental Impact Assesment.
@@ -8,11 +8,23 @@ This app that allows Rangers to report sightings of Animals in the forest and wh
 - GIT and GITHUB
 - PostgreSQL
 - IntelliJ
--
+- CSS
+
 ## Complete Setup Instructions
 - Git clone https://github.com/vnjuguna/javaspark-week-three.git
-- Open the cloned Code on Vs Code
-- Run with ...
+- Open the cloned Code on IntelliJ
+- To install the database do the following:
+  1.Launch postgres
+
+  2.Type in psql
+
+  Run these commands
+
+3. CREATE DATABASE wildlifesightings;
+
+4. \c wildlifesightings; 
+5. Copy the commands from the db.sql tile.
+
 ## BDD
 - Ranger Input of the Animal Sighting
 - Ranger reports whether the animal is endangered or not.

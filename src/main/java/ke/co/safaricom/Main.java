@@ -11,7 +11,7 @@ public class Main {
 
         public static void main(String[] args) {
             // root is 'src/main/resources', so put files in 'src/main/resources/public'
-            staticFiles.location("/public"); // Static files
+            staticFileLocation("/public"); // Static files
 
             get("/animals", (request, response) -> {
 
@@ -27,17 +27,15 @@ public class Main {
 
             get("/sightings", (request, response) -> {
 
-                Map<String, Object> model = new HashMap<>();
-                model.put("sightings", "placeholder");
+                    Map<String, Object> model = new HashMap<>();
+                    model.put("sightings", "dummy");
 
-                // Render the Handlebars template with the model data*/
+                return new ModelAndView(new HashMap(), "sightings.hbs");
+                    
+                }, new HandlebarsTemplateEngine());
 
-                return new ModelAndView(model, "sightings.hbs");
+               //return "Sighting reported successfully!"
 
-                //return "Sighting reported successfully!";
-
-
-            });
             get("/", (request, response) -> {
 
                 return "Home Page!";

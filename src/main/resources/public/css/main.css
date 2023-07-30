@@ -1,0 +1,12 @@
+body
+{
+    color: black-brown;
+    background: beige;
+}
+  /* CSS to resize the image */
+  .resizable-image {
+    max-width: 100%; /* Set the maximum width to 100% of its container */
+    max-height: 200px; /* Set the maximum height (adjust the value as per your requirement) */
+    display: block; /* Ensures the image is treated as a block element */
+    margin: auto; /* Centers the image horizontally within its container */
+  }
