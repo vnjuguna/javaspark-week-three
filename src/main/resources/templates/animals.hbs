@@ -32,7 +32,28 @@
     <h1>List of Animals</h1>
 
     <img src="images/lion.jpg">
-    <div class="container mt-5">
+
+    String name = request.queryParams("name");
+    boolean endangered = Boolean.parseBoolean(request.queryParams("endangered"));
+    int age = Integer.parseInt(request.queryParams("name"));
+    String health = request.queryParams("health");
+
+    <form method="post" action="/add-animals">
+        <label for="name">Name:</label>
+        <input id="name" name="name" type="text">
+
+        <label for="endangered">Endangered:</label>
+        <input id="endangered" name="endangered" type="boolean">
+
+        <label for="age">Age:</label>
+        <input id="age" name="Age" type="number">
+
+        <label for="health">Health:</label>
+        <input id="health" name="health" type="text">
+
+        <input type="submit" value="Add Animal">
+    </form>
+    {{!* <div class="container mt-5">
         <div class="row">
             <!-- Outer Column -->
             <!-- Button to Add Animal -->
@@ -103,7 +124,7 @@
         </div>
     </div>
 
-    </div>
+    </div> }}
     <!-- Bootstrap JS and jQuery links -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
