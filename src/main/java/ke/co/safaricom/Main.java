@@ -1,64 +1,105 @@
 package ke.co.safaricom;
 
+import ke.co.safaricom.configuration.Age;
+import ke.co.safaricom.configuration.Health;
+import ke.co.safaricom.dao.RangerDao;
+import ke.co.safaricom.dao.SightingDao;
+import ke.co.safaricom.models.Ranger;
+import ke.co.safaricom.models.Sighting;
 import ke.co.safaricom.utils.SharedUtils;
 import ke.co.safaricom.dao.AnimalDao;
-import ke.co.safaricom.models.animals;
+import ke.co.safaricom.models.Animal;
+import spark.ModelAndView;
+import spark.template.handlebars.HandlebarsTemplateEngine;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.Map;
 
 import static spark.Spark.*;
 public class Main {
 
         public static void main(String[] args) {
-            // root is 'src/main/resources', so put files in 'src/main/resources/public'
-            staticFileLocation("/public"); // Static files
 
-           /* get("/animals", (request, response) -> {
+            port(4567);
+            staticFiles.location("/public");
+            staticFiles.expireTime(600L);
+            staticFiles.registerMimeType("html", "text/html");
+            staticFiles.registerMimeType("hbs", "text/html");
+            staticFiles.externalLocation("src/main/resources");
 
+            get("/ranger/add",(request, response) ->{
+                return new ModelAndView( new HashMap<>(), "ranger.hbs");
+            },new HandlebarsTemplateEngine());
+
+
+            post("/create-ranger",(request, response) -> {
+                String name = request.queryParams("ranger");
+                Ranger ranger =new Ranger();
+
+                ranger.setName( name );
+                rangerDao.create( ranger);
+                System.out.println(name );
+                String alertScript = "<script>alert('successful added ranger "+name+"');</script>";
+                return alertScript;
+            });
+
+            get("/animal/add",(request, response) ->{
                 Map<String, Object> model = new HashMap<>();
-                model.put("animals", "dummy");
-
-                try (Connection connection = DatabaseConfig.getConnection()) {
-                    // Use the connection to interact with the database
-                    // For example, you can fetch data from the database and put it in the model
-                    // For demonstration, let's fetch a list of animals from the database
-                    // and put it in the model
-                    List<String> animalsFromDB = new ArrayList<>();
-                    Statement stmt = connection.createStatement();
-                    ResultSet rs = stmt.executeQuery("SELECT name FROM animals");
-                    while (rs.next()) {
-                        animalsFromDB.add(rs.getString("name"));
-                    }
-                    model.put("animalsFromDB", animalsFromDB);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                    // Handle database connection exceptions
-                } */
-
-                // Render the Handlebars template with the model data
-
-               /* return new ModelAndView(model, "animals.hbs");
-
-            }, new HandlebarsTemplateEngine());
+// model.put("options", animalDao.());
+                return new ModelAndView(model, "animal.hbs");
+            },new HandlebarsTemplateEngine());
 
 
+            post("/create-animal",(request, response) -> {
+                String name = request.queryParams("animal");
+                String health = request.queryParams("health");
+                String age = request.queryParams("age");
+                String endangered = request.queryParams("endangered");
+                Animal animal =new Animal();
+                animal.SetAge( Age.valueOf( age ) );
+                animal.setHealth( Health.valueOf( health ) );
+                animal.setName( name );
+                animal.setEndangered( endangered.equalsIgnoreCase( "yes" ));
+                AnimalDao.create(animal);
+                System.out.println(name + " " +age +health);
+                String alertScript = "<script>alert('successful added animal "+name+"' );</script>";
+                return alertScript;
+            });
+            get("/sighting/add",(request, response) ->{
+                Map<String, Object> model = new HashMap<>();
+                model.put("rangers", RangerDao.getRangerOption());
+                model.put("animals", AnimalDao.getAnimalOption());
+                return new ModelAndView(model, "sighting.hbs");
+            },new HandlebarsTemplateEngine());
 
 
-            get("/sightings", (request, response) -> {
+            post("/create-sighting",(request, response) -> {
+                String location = request.queryParams("location");
+                String health = request.queryParams("health");
+                String animalId = request.queryParams("animalId");
+                String rangerId = request.queryParams("rangerId");
+                Sighting sighting =new Sighting();
+                sighting.setLocation( location );
+                sighting.setHealth( health );
+                sighting.setTimestamp( LocalDateTime.now() );
+                sighting.setAnimal_id( Integer.parseInt( animalId ) );
+                sighting.setRanger_id( Integer.parseInt( rangerId) );
 
-                    Map<String, Object> model = new HashMap<>();
-                    model.put("sightings", "dummy");
+                SightingDao.create(sighting);
 
-                return new ModelAndView(new HashMap(), "sightings.hbs");
-                    
-                }, new HandlebarsTemplateEngine());
+                System.out.println(location + " " +health);
+                String alertScript = "<script>alert('successful added sighting "+sighting+"' );</script>";
+                return alertScript;
+            });
 
-               //return "Sighting reported successfully!"
 
-            get("/", (request, response) -> {
+        }
 
-                return "Home Page!";
-            }); */
+}
+            /* staticFileLocation("/public"); // Static files
+
+
 
             get("/animals/add", (request, response) -> {
                 return SharedUtils.render(new HashMap<>(), "animals.hbs");
@@ -69,7 +110,7 @@ public class Main {
                 int age = Integer.parseInt(request.queryParams("name"));
                 String health = request.queryParams("health");
 
-                Animal animal = new animal();
+                Animal animal = new Animal();
                 animal.setName(name);
                 animal.setEndangered(endangered);
                 animal.setAge(age);
@@ -82,5 +123,5 @@ public class Main {
                 return null;
             });
         }
-    }
+    } */
 
