@@ -11,7 +11,7 @@ public class AnimalDao {
 
     public static void create(Animal animal){
         try(Connection connection = sql2o.open()) {
-            String query = " insert into animal (name, endangered, age, health) VALUES (:name,:endangered, :age. :health);";
+            String query = " insert into animals (name, endangered, age, health) VALUES (:name,:endangered, :age. :health);";
             connection.createQuery(query)
                     .addParameter("name", animal.getName())
                     .addParameter("endangered", animal.getEndangered())

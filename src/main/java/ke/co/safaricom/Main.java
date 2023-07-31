@@ -69,14 +69,14 @@ public class Main {
                 int age = Integer.parseInt(request.queryParams("name"));
                 String health = request.queryParams("health");
 
-                Animals animals = new animals();
-                animals.setName(name);
-                animals.setEndangered(endangered);
-                animals.setAge(age);
-                animals.setHealth(health);
+                Animal animal = new animal();
+                animal.setName(name);
+                animal.setEndangered(endangered);
+                animal.setAge(age);
+                animal.setHealth(health);
 
 
-                AnimalDao.create(ke.co.safaricom.models.animals);
+                AnimalDao.create(animal);;
 
                 response.redirect("/");
                 return null;
