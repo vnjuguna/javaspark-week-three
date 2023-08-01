@@ -62,23 +62,3 @@ public class AnimalDao {
 }
 
 
-   /* private static final Sql2o sql2o = DatabaseConfig.getDatabase();
-
-
-    public static void create(Animal animal){
-        try(Connection connection = sql2o.open()) {
-            String query = " insert into animals (name, endangered, age, health) VALUES (:name,:endangered, :age. :health);";
-            connection.createQuery(query)
-                    .addParameter("name", animal.getName())
-                    .addParameter("endangered", animal.isEndangered())
-                    .addParameter("age", animal.getAge())
-                    .addParameter("health", animal.getHealth())
-                    .executeUpdate();
-        } catch(Exception exception){
-            System.out.println(exception.getMessage());
-        }
-
-
-
-    }
-    */

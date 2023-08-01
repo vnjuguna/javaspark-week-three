@@ -4,58 +4,82 @@
     <meta charset="UTF-8">
     <title>Animal</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href= "css/main.css">
+    <link rel="stylesheet" href="css/main.css">
     <!-- Custom CSS for the button and table borders -->
     <style>
         .btn-brown {
-            background-color: #8B4513; /* Brown color */
-            color: white; /* Text color for better contrast */
+            background-color: #8B4513;
+            color: white;
         }
 
-
-        /* Border for the outer column */
-        .outer-column {
-            border: 1px solid #ccc; /* Add border to the outer column */
-            padding: 10px; /* Add padding for a better appearance */
-            border-radius: 5px; /* Add rounded corners for a neater look */
+        /* Add some padding and margins for better spacing */
+        .form-container {
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
 
-        /* Border for the inner table */
-        .inner-table {
-            border: 1px solid #ccc; /* Add border to the table */
-            border-radius: 5px; /* Add rounded corners for a neater look */
+        /* Style the submit button */
+        #fcf-button {
+            background-color: #8B4513;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Adjust the form labels */
+        label {
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-<h1>Animals</h1>
-<img src="images/lion.jpg">
-<form action="/create-animal" method="post">
+<div class="container">
+    <h1 class="my-4">Animals</h1>
+    <img src="images/lion.jpg" class="img-fluid">
 
-    <label>Name</label><br/>
-    <input type="text" id="name" name="animal"><br/><br/>
+    <div class="form-container">
+        <form action="/create-animal" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="animal" class="form-control">
+            </div>
 
-    <label for="health">State of health:</label>
-    <select id="health" name="health">
-        <option value="healthy">healthy</option>
-        <option value="ill">ill</option>
-        <option value="okay">okay</option>
-    </select>
-    <label for="age">Select age:</label>
-    <select id="age" name="age">
-        <option value="newborn">newborn</option>
-        <option value="young">young</option>
-        <option value="adult">adult</option>
-    </select>
-    <select id="endangered" name="endangered">
-        <option value="yes">yes</option>
-        <option value="No">No</option>
-    </select>
-    <div class="fcf-form-group">
-        <button type="submit" id="fcf-button" class="fcf-btn fcf-btn-primary fcf-btn-lg fcf-btn-block">Submit</button>
+            <div class="form-group">
+                <label for="health">State of health:</label>
+                <select id="health" name="health" class="form-control">
+                    <option value="healthy">healthy</option>
+                    <option value="ill">ill</option>
+                    <option value="okay">okay</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Select age:</label>
+                <select id="age" name="age" class="form-control">
+                    <option value="newborn">newborn</option>
+                    <option value="young">young</option>
+                    <option value="adult">adult</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="endangered">Is endangered?</label>
+                <select id="endangered" name="endangered" class="form-control">
+                    <option value="yes">yes</option>
+                    <option value="no">no</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" id="fcf-button" class="btn btn-brown btn-block">Submit</button>
+            </div>
+        </form>
     </div>
-
-</form>
+</div>
 
 </body>
 </html>

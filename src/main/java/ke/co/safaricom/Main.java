@@ -96,7 +96,12 @@ public class Main {
                 sighting.setLocation( location );
                 sighting.setHealth( health );
                 sighting.setTimestamp( LocalDateTime.now() );
-                sighting.setAnimal_id( Integer.parseInt( animalId ) );
+
+                try {
+                    sighting.setAnimal_id(Integer.parseInt(animalId));
+                } catch (NumberFormatException e) {
+                    return "<script>The animal ID must be a valid integer</script>";
+                }
                 sighting.setRanger_id( Integer.parseInt( rangerId) );
 
                 SightingDao.create(sighting);
