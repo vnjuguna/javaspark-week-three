@@ -15,6 +15,7 @@ public class Animal {
         }
 
         public Age getAge() {
+
             return age;
         }
 
@@ -24,10 +25,12 @@ public class Animal {
 
         public Health getHealth() {
             return health;
+
         }
 
         public void setHealth(Health health) {
             this.health = health;
+
         }
 
         public int getId() {

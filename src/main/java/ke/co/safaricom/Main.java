@@ -55,7 +55,7 @@ public class Main {
                 String age = request.queryParams("age");
                 String endangered = request.queryParams("endangered");
                 Animal animal =new Animal();
-                animal.SetAge( Age.valueOf( age ) );
+                animal.setAge( Age.valueOf( age ) );
                 animal.setHealth( Health.valueOf( health ) );
                 animal.setName( name );
                 animal.setEndangered( endangered.equalsIgnoreCase( "yes" ));
