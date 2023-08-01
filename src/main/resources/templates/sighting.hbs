@@ -3,73 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <title>Sighting</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Link to Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
-    <img src="images/rangerpic.jpg" alt="image not found" width="25%" height="100">
-
     <!-- Custom CSS for the button and table borders -->
     <style>
-        .btn-brown {
-            background-color: #8B4513; /* Brown color */
-            color: white; /* Text color for better contrast */
+        /* Custom styles for the form container */
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-
-        /* Border for the outer column */
-        .outer-column {
-            border: 1px solid #ccc; /* Add border to the outer column */
-            padding: 10px; /* Add padding for a better appearance */
-            border-radius: 5px; /* Add rounded corners for a neater look */
+        /* Style for the form labels */
+        label {
+            font-weight: bold;
         }
 
-        /* Border for the inner table */
-        .inner-table {
-            border: 1px solid #ccc; /* Add border to the table */
-            border-radius: 5px; /* Add rounded corners for a neater look */
+        /* Style for the select dropdowns */
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        /* Style for the date/time section */
+        #datetime {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Style for the submit button */
+        #fcf-button {
+            background-color: #8B4513;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-<h1>SIGHTING</h1>
-<form action="/create-sighting" method="post">
+<div class="container">
+    <h1 class="my-4">SIGHTING</h1>
+    <div class="form-container">
+        <form action="/create-sighting" method="post">
+            <label>Select Animal</label>
+            <select name="animalId">
+                {{#each animals}}
+                    <option value="{{this.id}}">{{this.text}}</option>
+                {{/each}}
+            </select>
 
-    <label>Select Animal </label><br/>
-    <select name="animalId"><br/><br/>
-        {{#each animals}}
-            <option value="{{this.id}}">{{this.text}}</option>
-        {{/each}}
-    </select></br></br>
-    <label> Select Ranger</label><br/>
-    <select name="rangerId"><br/><br/>
-        {{#each rangers}}
-            <option value="{{this.id}}">{{this.text}}</option>
-        {{/each}}
-    </select><br/><br/>
-    <label>Select Health</label><br/>
-    <select id="health" name="health"><br/>
-        <option value="healthy">healthy</option>
-        <option value="ill">ill</option>
-        <option value="okay">okay</option>
-        <label>Select location</label><br/>
-    </select><br/><br/>
-    <label> Select location</label><br/>
-    <select id="location" name="location">
-        <option value="Zone A">Zone A</option>
-        <option value="Near the River">Near the River</option>
-        <option value="NE Quadrant">NE Quadrant</option>
-    </select>
-    <p>Date/Time: <span id="datetime"></span></p>
+            <label>Select Ranger</label>
+            <select name="rangerId">
+                {{#each rangers}}
+                    <option value="{{this.id}}">{{this.text}}</option>
+                {{/each}}
+            </select>
 
-    <script>
-var dt = new Date();
-document.getElementById("datetime").innerHTML = dt.toLocaleTimeString();
-</script>
+            <label>Select Health</label>
+            <select id="health" name="health">
+                <option value="healthy">healthy</option>
+                <option value="ill">ill</option>
+                <option value="okay">okay</option>
+            </select>
 
-    <div class="fcf-form-group">
-        <button type="submit" id="fcf-button" class="fcf-btn fcf-btn-primary fcf-btn-lg fcf-btn-block">Submit</button>
+            <label>Select Location</label>
+            <select id="location" name="location">
+                <option value="Zone A">Zone A</option>
+                <option value="Near the River">Near the River</option>
+                <option value="NE Quadrant">NE Quadrant</option>
+            </select>
+
+            <p>Date/Time: <span id="datetime"></span></p>
+
+            <div class="fcf-form-group">
+                <button type="submit" id="fcf-button" class="btn btn-primary btn-lg btn-block">Submit</button>
+            </div>
+        </form>
     </div>
+</div>
 
-</form>
-
+<script>
+        var dt = new Date();
+        document.getElementById("datetime").innerHTML = dt.toLocaleTimeString();
+    </script>
 </body>
 </html>
