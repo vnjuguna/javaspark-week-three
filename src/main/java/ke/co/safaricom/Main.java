@@ -48,6 +48,16 @@ public class Main {
                 return new ModelAndView(model, "index.hbs");
             },new HandlebarsTemplateEngine());
 
+            get("/",(request, response) ->{
+                Map<String, Object> model = new HashMap<>();
+                return new ModelAndView(model, "ranger.hbs");
+            },new HandlebarsTemplateEngine());
+
+            get("/",(request, response) ->{
+                Map<String, Object> model = new HashMap<>();
+                return new ModelAndView(model, "sighting.hbs");
+            },new HandlebarsTemplateEngine());
+
             get("/animal/add",(request, response) ->{
                 Map<String, Object> model = new HashMap<>();
                 return new ModelAndView(model, "animal.hbs");
