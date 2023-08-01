@@ -43,6 +43,11 @@ public class Main {
                 return alertScript;
             });
 
+            get("/",(request, response) ->{
+                Map<String, Object> model = new HashMap<>();
+                return new ModelAndView(model, "index.hbs");
+            },new HandlebarsTemplateEngine());
+
             get("/animal/add",(request, response) ->{
                 Map<String, Object> model = new HashMap<>();
                 return new ModelAndView(model, "animal.hbs");
