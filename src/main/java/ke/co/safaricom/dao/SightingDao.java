@@ -1,7 +1,7 @@
 package ke.co.safaricom.dao;
 
 import ke.co.safaricom.config.DatabaseConfig;
-import ke.co.safaricom.models.Sighting;
+import ke.co.safaricom.model.Sighting;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
@@ -29,6 +29,8 @@ public class SightingDao {
                     .addParameter("timestamp", sighting.getTimestamp())
 
                     .executeUpdate();
+
+
 
         } catch (Exception exception) {
 

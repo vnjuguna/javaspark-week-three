@@ -1,6 +1,8 @@
-package ke.co.safaricom.models;
+package ke.co.safaricom.model;
 
 public class Ranger {
+    private int id;
+    private String name;
     public Ranger() {
     }
 
@@ -20,6 +22,5 @@ public class Ranger {
         this.name = name;
     }
 
-    private int id;
-    private String name;
+
 }

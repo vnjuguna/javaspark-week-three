@@ -1,10 +1,9 @@
-package ke.co.safaricom.models;
+package ke.co.safaricom.model;
 
 import ke.co.safaricom.configuration.Age;
 import ke.co.safaricom.configuration.Health;
 
 public class Animal {
-    public class Animal {
         private Age age;
         private Health health;
         private int id;
@@ -55,5 +54,5 @@ public class Animal {
             this.endangered = endangered;
         }
     }
-}
+
 

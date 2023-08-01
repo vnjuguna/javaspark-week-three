@@ -4,11 +4,10 @@ import ke.co.safaricom.configuration.Age;
 import ke.co.safaricom.configuration.Health;
 import ke.co.safaricom.dao.RangerDao;
 import ke.co.safaricom.dao.SightingDao;
-import ke.co.safaricom.models.Ranger;
-import ke.co.safaricom.models.Sighting;
-import ke.co.safaricom.utils.SharedUtils;
+import ke.co.safaricom.model.Ranger;
+import ke.co.safaricom.model.Sighting;
 import ke.co.safaricom.dao.AnimalDao;
-import ke.co.safaricom.models.Animal;
+import ke.co.safaricom.model.Animal;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
@@ -38,7 +37,7 @@ public class Main {
                 Ranger ranger =new Ranger();
 
                 ranger.setName( name );
-                rangerDao.create( ranger);
+                RangerDao.create( ranger);
                 System.out.println(name );
                 String alertScript = "<script>alert('successful added ranger "+name+"');</script>";
                 return alertScript;
@@ -46,7 +45,6 @@ public class Main {
 
             get("/animal/add",(request, response) ->{
                 Map<String, Object> model = new HashMap<>();
-// model.put("options", animalDao.());
                 return new ModelAndView(model, "animal.hbs");
             },new HandlebarsTemplateEngine());
 

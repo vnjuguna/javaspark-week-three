@@ -2,7 +2,7 @@ package ke.co.safaricom.dao;
 
 import ke.co.safaricom.config.DatabaseConfig;
 import ke.co.safaricom.dto.RangerOption;
-import ke.co.safaricom.models.Ranger;
+import ke.co.safaricom.model.Ranger;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
@@ -60,4 +60,4 @@ public class RangerDao {
 
     }
 
-}
+
